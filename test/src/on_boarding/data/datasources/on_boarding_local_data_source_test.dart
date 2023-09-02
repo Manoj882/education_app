@@ -1,6 +1,8 @@
 
 
 
+import 'dart:math';
+
 import 'package:education_app/core/errors/exceptions.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -45,4 +47,48 @@ void main(){
 
 
   });
+
+  // test for check if user is first first timer
+  group('checkIfUserisFirstTimer', () { 
+    test('should call [SharedPreferences] to check if user is first timer and'
+    'return the right response form storage when data exists', 
+    () async{
+      when(() => prefs.getBool(any())).thenReturn(false);
+
+      final result = await localDataSource.checkIfUserIsFirstTimer();
+
+      expect(result, false);
+
+      verify(() => prefs.getBool(kFirstTimerKey)).called(1);
+      verifyNoMoreInteractions(prefs);
+
+    });
+
+    test('should return true if there is no data in storage', () async {
+      when(() => prefs.getBool(any())).thenReturn(null);
+
+      final result = await localDataSource.checkIfUserIsFirstTimer();
+
+      expect(result, true);
+
+      verify(() => prefs.getBool(kFirstTimerKey)).called(1);
+      verifyNoMoreInteractions(prefs);
+    });
+
+    test('should throw a [CacheException] when there is an error'
+    'retrieving the data'
+    , () async{
+      when(() => prefs.getBool(any())).thenThrow(Exception());
+
+      final methodCall = localDataSource.checkIfUserIsFirstTimer;
+
+      expect(methodCall, throwsA(isA<CacheException>()));
+
+      verify(() => prefs.getBool(kFirstTimerKey)).called(1);
+      verifyNoMoreInteractions(prefs);
+
+    });
+
+  });
+  
 }
