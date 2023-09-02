@@ -1,4 +1,4 @@
-import 'package:education_app/src/on_boarding/presentation/on_boarding_screen.dart';
+import 'package:education_app/src/on_boarding/presentation/views/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../common/views/page_under_construction.dart';
