@@ -1,6 +1,9 @@
 import 'package:education_app/core/res/colors.dart';
 import 'package:education_app/core/res/fonts.dart';
+import 'package:education_app/src/on_boarding/presentation/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'core/services/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +24,8 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.blue,
         colorScheme: ColorScheme.fromSwatch(accentColor: ColorsManager.primaryColor),
       ),
+      onGenerateRoute: generateRoute,
+
       
     );
   }
