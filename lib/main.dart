@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'core/services/router.dart';
 
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
   runApp(const MyApp());
@@ -24,12 +24,10 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: Fonts.poppins,
         // primarySwatch: Colors.blue,
-        colorScheme: ColorScheme.fromSwatch(accentColor: ColorsManager.primaryColor),
+        colorScheme:
+            ColorScheme.fromSwatch(accentColor: ColorsManager.primaryColor),
       ),
       onGenerateRoute: generateRoute,
-
-      
     );
   }
 }
-

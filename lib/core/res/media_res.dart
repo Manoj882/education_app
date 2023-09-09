@@ -7,9 +7,9 @@ class MediaRes {
 
   static const atom = '$_baseIcons`/atom.png';
 
-  static const onBoardingBackground = '';
+  // static const onBoardingBackground = '';
 
-  static const pageUnderConstruction = '';
+  // static const pageUnderConstruction = '';
 
 
   //vectors
